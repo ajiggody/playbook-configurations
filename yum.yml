@@ -1,0 +1,26 @@
+---
+- name: Install Yum Repositories
+  hosts: all
+  become: true
+
+
+  tasks: 
+    - name: Download BaseOS repo
+      ansible.builtin.yum_repository:
+        name: BaseOS
+        description: BaseOS Repo
+        baseurl: https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/
+        enabled: true
+        gpgcheck: false
+  
+ 
+    - name: Download AppStream repo
+      ansible.builtin.yum_repository:
+        name: AppStream repo
+        description: AppStream repo
+        baseurl: https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/
+        enabled: true
+        gpgcheck: false
+
+        
+  

@@ -1,0 +1,23 @@
+---
+- name: Install and update packages
+  hosts: dev 
+  become: true
+  vars: 
+    package: "@RPM Development Tools"
+
+  tasks:
+    - name: Install the latest version of vim
+      ansible.builtin.dnf:
+        name: vim
+        state: latest 
+ 
+    - name: Install the latest version of Apache
+      ansible.builtin.dnf:
+        name: "{{ package }}"
+        state: latest
+
+    - name: Upgrade all packages to the latest versions
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+ 

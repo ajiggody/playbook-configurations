@@ -1,0 +1,39 @@
+---
+- name: Install httpd package, start, and enable the service
+  hosts: webservers 
+  become: true 
+
+  tasks:
+
+    - name: Install the latest version of httpd
+      ansible.builtin.dnf:
+        name: httpd
+        state: latest 
+
+    - name: Start service httpd, if not started
+      ansible.builtin.service:
+        name: httpd
+        state: started
+
+    - name: Enable service httpd, if not started
+      ansible.builtin.service:
+        name: httpd
+        enabled: yes
+
+- name: Install the firewall package, start, and enable the service
+  hosts: webservers
+  become: true
+
+  tasks:
+    
+    - name: Install firewalld package
+      ansible.builtin.dnf:
+        name: firewalld
+        state: present
+
+
+    - name: Start and enable firewalld service
+      ansible.builtin.service:
+        name: firewalld
+        state: started
+        enabled: true 
