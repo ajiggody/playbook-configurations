@@ -16,8 +16,9 @@ automatically start on boot.
 
 ▶️ How to Run the Playbooks
 
-Make sure you have a valid Ansible inventory file configured before running any playbook. (/home/user/proj-directory/inventory)
-Run a specific playbook: For escalated privileges assign "become: true" at the beginning of your play
+Make sure you have a valid Ansible inventory file configured before running any playbook: (/home/user/proj-directory/inventory)
+
+Run a specific playbook: (For escalated privileges assign "become: true" at the beginning of your play)
 
 - ansible-playbook yum.yml
 - ansible-playbook packages.yml
