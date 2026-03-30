@@ -11,7 +11,7 @@
         name: vim
         state: latest 
  
-    - name: Install the latest version of Apache
+    - name: Install RPM Development Tools
       ansible.builtin.dnf:
         name: "{{ package }}"
         state: latest
