@@ -39,6 +39,7 @@ Run a specific playbook: (For escalated privileges assign "become: true" at the 
 🗂️ Repository Structure
 
 playbook-configurations/
+
 ├── yum.yml
 ├── packages.yml
 ├── services.yml
