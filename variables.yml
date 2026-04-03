@@ -1,0 +1,16 @@
+---
+
+- name: Use variables to display a message
+  hosts: localhost
+  become: true 
+  vars:
+    f_name: John
+    l_name: Doe
+    age: 30
+
+  tasks:
+
+    - name: Display name & age
+      ansible.builtin.debug:
+        msg: "My name is {{f_name}} {{l_name}} and I am {{age}} years old."
+

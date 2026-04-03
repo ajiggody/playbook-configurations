@@ -1,0 +1,23 @@
+---
+
+- name: Extract Ansible Facts
+  hosts: webservers, balancers
+  become: true 
+    
+  tasks:
+
+     - name: Write system facts to /tmp/facts.txt
+       ansible.builtin.copy:
+        dest: /tmp/facts.txt
+        owner: automation
+        group: automation
+        mode: '0644'
+        content: |
+          Hostname: {{ansible_hostname}}
+          FQDN:  {{ ansible_fqdn }}
+          Distribution: {{ ansible_distribution }}
+          IP Address: {{ ansible_default_ipv4.address }}
+          BIOS version: {{ ansible_bios_version }}
+    
+    
+
