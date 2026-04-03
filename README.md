@@ -12,7 +12,12 @@ Ensures target hosts have the necessary software and are fully up to date.
 
 - services.yml - starts and enables system services on target hosts. Ensures critical services are running and set to
 automatically start on boot.
- 
+
+- host_info.yml - utilizes [Ansible facts] to extract host information (e.g., IP address, hostname, BIOS version) from each managed node and then redirecting it into a temporary file.
+
+- variables.yml - executes the variables values in my [vars] section of the playbook (e.g., f_name, l_name, age) to my localhost.
+
+- secret_user.yml - creates a user account named jdoe (representing Jane Doe) across all managed nodes, while securely pulling a password from an encrypted vault file. It then displays a secret message stored in that same vault file. 
 
 ▶️ How to Run the Playbooks
 
@@ -46,4 +51,7 @@ playbook-configurations/
 ├── yum.yml
 ├── packages.yml
 ├── services.yml
+├── variables.yml
+├── secret_user.yml
+├── host_info.yml
 └── README.md
