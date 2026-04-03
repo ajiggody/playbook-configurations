@@ -1,7 +1,6 @@
 📦 Ansible Playbook Configurations
 
-- A collection of Ansible playbooks for automating common Linux system administration tasks including repository configuration,
-package management, and service enablement.
+- A collection of Ansible playbooks for automating common Linux system administration tasks including repository configuration, package management, service enablement, extracting host information, and variable configuration. 
 
 📁 Playbooks
 
@@ -13,6 +12,7 @@ Ensures target hosts have the necessary software and are fully up to date.
 
 - services.yml - starts and enables system services on target hosts. Ensures critical services are running and set to
 automatically start on boot.
+ 
 
 ▶️ How to Run the Playbooks
 
@@ -23,6 +23,9 @@ Run a specific playbook: (For escalated privileges assign "become: true" at the 
 - ansible-playbook yum.yml
 - ansible-playbook packages.yml
 - ansible-playbook services.yml
+- ansible-playbook host_info.yml
+- ansible-playbook variables.yml
+- ansible-playbook secret_user.yml --ask-vault-pass
 
 
 ✅ Requirements & Prerequisites
