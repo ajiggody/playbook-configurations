@@ -1,0 +1,12 @@
+---
+
+- name: Conditional Task - Checking memory
+  hosts: all
+  become: true
+
+
+  tasks:
+    - name: Display system memory
+      ansible.builtin.debug:
+        msg: " This system has more than 1000MB of RAM  "
+      when: ansible_memory_mb | int > 1000

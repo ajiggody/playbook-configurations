@@ -1,0 +1,12 @@
+---
+
+- name: Generate a system report with Jinja2 
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Deploy system report to a temporary file
+      ansible.builtin.template:
+        src: /home/automation/ansible1/system_report.j2
+        dest: /tmp/system_report.txt

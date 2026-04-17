@@ -1,0 +1,16 @@
+---
+
+- name: Create Users with a Loop
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Create the following users
+      ansible.builtin.user:
+        name: "{{ item }}"
+        shell: /bin/bash
+      loop:
+        - alex
+        - brianna
+        - charles

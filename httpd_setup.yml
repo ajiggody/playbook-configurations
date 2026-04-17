@@ -1,0 +1,32 @@
+---
+
+- name: Using task Handlers to Start Services
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Install & start httpd service 
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+      
+    - name: Copy index.html into web directory
+      ansible.builtin.copy:
+        src: index.html
+        dest: /var/www/html/
+        owner: automation
+        group: automation
+        mode: '0644'
+      notify: Start httpd service
+
+
+
+  handlers: 
+    - name: Start httpd service
+      ansible.builtin.service:
+        name: httpd
+        state: present
+  
+
+

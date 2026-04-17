@@ -1,0 +1,16 @@
+---
+
+- name: Conditional Task targeting specific hosts
+  hosts: all
+  become: true
+
+
+  tasks:
+
+    - name: Create special.txt file
+      ansible.builtin.file:
+        path: /etc/special.txt
+        state: touch
+      when: inventory_hostname in groups['test']
+
+

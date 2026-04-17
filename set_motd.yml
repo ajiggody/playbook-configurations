@@ -1,0 +1,13 @@
+---
+
+- name: Deploy motd.j2 file to /etc/motd on all hosts
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Deploy a motd template
+      ansible.builtin.template:
+        src: /home/automation/ansible1/motd.j2
+        dest: /etc/motd
+            

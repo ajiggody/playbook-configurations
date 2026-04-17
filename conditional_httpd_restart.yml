@@ -1,0 +1,29 @@
+---
+
+- name: Conditional Service Restart with Handler
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Install the latest version of Apache
+      ansible.builtin.dnf:
+        name: httpd
+        state: latest
+
+    - name: Deploy apache configuration file
+      ansible.builtin.template:
+        src: apache.conf.j2
+        dest: /etc/httpd/conf.d/custom.conf
+      when: inventory_hostname in groups['webservers']
+      notify: Restart httpd
+
+
+  handlers:
+
+    - name: Restart httpd
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+
+        

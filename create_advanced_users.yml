@@ -1,0 +1,18 @@
+---
+
+- name: Create Advanced Users with a Loop
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Create users with muliple attributes
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        shell: "{{ item.shell }}" 
+        comment: "{{ item.comment }}"
+      loop:
+        - { name: JB , shell: /bin/bash, comment: "Jalen Brunson" } 
+        - { name: OG , shell: /bin/bash, comment: "OG Anunoby" }
+        - { name: KAT , shell: /bin/bash, comment: "Karl Anthony-Towns" }
+        
