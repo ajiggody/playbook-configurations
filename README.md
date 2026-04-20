@@ -19,6 +19,28 @@ automatically start on boot.
 
 - secret_user.yml - creates a user account named jdoe (representing Jane Doe) across all managed nodes, while securely pulling a password from an encrypted vault file. It then displays a secret message stored in that same vault file. 
 
+- httpd_setup.yml - simple playbook using task handlers to start httpd as a service
+
+- create_users_loop.yml - creates users in a list with a basic loop
+
+- create_advanced_users.yml - uses a loop with a list of dictionaries to create users with multiple
+attributes. Each dictionary entry includes name, shell, and comment. 
+
+- conditional_hostname.yml - creates the file /etc/special.txt, but only if the host is a
+member of the test group
+
+- check_memory.yml - playbook with a task that uses the debug module to display the system's total memory,
+but only if the host has more than 1000MB of RAM.
+
+- set_motd.yml - created a Jinja2 template file motd.j2 with an if/else condition, then created a playbook that uses the template module to deploy your [motd.j2] file to /etc/motd on all hosts
+
+- generate_report.yml - Created a Jinja2 template file at system_report.j2 that included the following information
+for each host (e.g, hostname, IP address, total memory (MB)), then used template module to deploy the report to
+/tmp/system_report.txt on all host
+
+- conditional_httpd_restart.yml - This playbook that combines what I've learned about handlers, templates, and
+conditionals & applies it by installing the httpd package on all hosts, using the template module to deploy an Apache config file (apache.conf.j2) to /etc/httpd/conf.d/custom.conf, then restarting the httpd service when notified. The template included The host's ServerName & listens on port 80
+
 ▶️ How to Run the Playbooks
 
 Make sure you have a valid Ansible inventory file configured before running any playbook: (/home/user/proj-directory/inventory)
@@ -31,6 +53,15 @@ Run a specific playbook: (For escalated privileges assign "become: true" at the 
 - ansible-playbook host_info.yml
 - ansible-playbook variables.yml
 - ansible-playbook secret_user.yml --ask-vault-pass
+- httpd_setup.yml
+- create_users_loop.yml 
+- create_advanced_users.yml 
+- conditional_hostname.yml 
+- check_memory.yml
+- set_motd.yml
+- generate_report.yml 
+- conditional_httpd_restart.yml
+
 
 
 ✅ Requirements & Prerequisites
@@ -54,4 +85,11 @@ playbook-configurations/
 ├── variables.yml
 ├── secret_user.yml
 ├── host_info.yml
+├── create_users_loop.yml
+├── create_advanced_users.yml
+├── conditional_hostname.yml
+├── check_memory.yml
+├── set_motd.yml
+├── generate_report.yml
+├── conditional_httpd_restart.yml
 └── README.md
