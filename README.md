@@ -74,7 +74,7 @@ Run a specific playbook: (For escalated privileges assign "become: true" at the 
 - SSH key-based authentication set up between the control node and managed hosts
 - Sudo/root privileges on target hosts (-b)
 
-
+'''
 🗂️ Repository Structure
 
 playbook-configurations/
@@ -93,3 +93,4 @@ playbook-configurations/
 ├── generate_report.yml
 ├── conditional_httpd_restart.yml
 └── README.md
+'''
